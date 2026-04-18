@@ -149,3 +149,4 @@ int commit_walk(commit_walk_fn callback, void *ctx) {
     return commit_log();
 }
 // phase4 step1
+// phase4 step2
