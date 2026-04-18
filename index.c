@@ -179,3 +179,4 @@ int index_add(Index *index, const char *path) {
 }
 // phase3 step1
 // phase3 step2
+// phase3 step3
