@@ -15,7 +15,8 @@
 #include <string.h>
 #include <dirent.h>
 #include <sys/stat.h>
-
+#include "index.h"
+#include "pes.h"
 // ─── Mode Constants ─────────────────────────────────────────────────────────
 
 #define MODE_FILE      0100644
@@ -130,8 +131,51 @@ int tree_serialize(const Tree *tree, void **data_out, size_t *len_out) {
 //
 // Returns 0 on success, -1 on error.
 int tree_from_index(ObjectID *id_out) {
-    // TODO: Implement recursive tree building
-    // (See Lab Appendix for logical steps)
-    (void)id_out;
-    return -1;
+    Index index;
+
+    // Load index
+    if (index_load(&index) != 0) {
+        fprintf(stderr, "error: failed to load index\n");
+        return -1;
+    }
+
+    if (index.count == 0) {
+        fprintf(stderr, "error: index empty\n");
+        return -1;
+    }
+
+    Tree tree;
+    tree.count = 0;
+
+    for (int i = 0; i < index.count; i++) {
+        TreeEntry *e = &tree.entries[tree.count++];
+
+        // copy file name
+        strcpy(e->name, index.entries[i].path);
+
+        // copy mode
+        e->mode = index.entries[i].mode;
+
+        // copy hash
+        e->hash = index.entries[i].hash;
+    }
+
+    void *data;
+    size_t len;
+
+    // serialize tree
+    if (tree_serialize(&tree, &data, &len) != 0) {
+        fprintf(stderr, "error: tree serialize failed\n");
+        return -1;
+    }
+
+    // write tree object
+    if (object_write(OBJ_TREE, data, len, id_out) != 0) {
+        fprintf(stderr, "error: object write failed\n");
+        free(data);
+        return -1;
+    }
+
+    free(data);
+    return 0;
 }
