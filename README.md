@@ -64,24 +64,44 @@ In this phase, we implemented the core object storage system:
 
 ### Phase 1
 
-* 1A_test_objects.png
-* 1B_object_store.png
+#### 1A - Test Objects
+![1A](screenshots/1A_test_objects.png)
+
+#### 1B - Object Store
+![1B](screenshots/1B_object_store.png)
+
+---
 
 ### Phase 2
 
-* 2A_test_tree.png
-* 2B_tree_object_hex.png
+#### 2A - Tree Test
+![2A](screenshots/2A_test_tree.png)
+
+#### 2B - Tree Object Hex
+![2B](screenshots/2B_tree_object_hex.png)
+
+---
 
 ### Phase 3
 
-* 3A_pes_status.png
-* 3B_index_file.png
+#### 3A - PES Status
+![3A](screenshots/3A_pes_status.png)
+
+#### 3B - Index File
+![3B](screenshots/3B_index_file.png)
+
+---
 
 ### Phase 4
 
-* 4A_pes_log.png
-* 4B_object_growth.png
-* 4C_refs.png
+#### 4A - PES Log
+![4A](screenshots/4A_pes_log.png)
+
+#### 4B - Object Growth
+![4B](screenshots/4B_object_growth.png)
+
+#### 4C - References
+![4C](screenshots/4C_refs.png)
 
 ---
 
