@@ -178,3 +178,4 @@ int index_add(Index *index, const char *path) {
     return index_save(index);
 }
 // phase3 step1
+// phase3 step2
